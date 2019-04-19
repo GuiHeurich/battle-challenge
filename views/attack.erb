@@ -5,5 +5,11 @@
   <%= @game.player_1.name %> attacked <%= @game.player_2.name %>
 </h2>
 <h2>
-  <%= @game.player_2.name %>: <%= @game.player_2.hit_points %>
+  <%= @game.player_2.name %>: <%= @game.player_2.hit_points %> HP
 </h2>
+
+<a href="/play">OK</a>
+<!--
+form action="/attack" method="post">
+  <input type="submit" value="OK" >
+</form> -->

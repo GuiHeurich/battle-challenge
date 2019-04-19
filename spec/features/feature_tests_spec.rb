@@ -36,9 +36,44 @@ end
 # So I can start to lose a game of Battle,
 # I want Player 2's attack to reduce my HP by 10
 
-
-
+feature 'Start to lose' do
+  scenario 'reduces player HP' do
+    sign_in_and_play
+    click_button 'ATTACK'
+    expect(page).to have_content '50 HP'
+  end
+end
 
 # As two Players,
 # So we can continue our game of Battle,
 # We want to switch turns
+
+feature 'Switch turns' do
+
+  context 'seeing the current turn' do
+    scenario 'at the start of the game' do
+      sign_in_and_play
+      expect(page).to have_content "Callum's turn"
+    end
+
+    scenario 'after player 1 attacks' do
+      sign_in_and_play
+      click_button 'ATTACK'
+      click_link 'OK'
+      expect(page).not_to have_content "Callum's turn"
+      expect(page).to have_content "Gui's turn"
+    end
+  end
+end
+
+# As Player 1,
+# So I can see how close I am to losing,
+# I want to see my own hit points
+#
+# As Player 1,
+# So I can lose a game of Battle,
+# I want Player 2 to attack me, and I want to get a confirmation
+#
+# As Player 1,
+# So I can start to lose a game of Battle,
+# I want Player 2's attack to reduce my HP
