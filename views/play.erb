@@ -3,8 +3,13 @@
 </h1>
 
 <h2>
-<%= @game.current_turn.name %>'s turn
+  <% if @game.finished? == true %>
+  <%= @game.final_message %>
+  <% else %>
+  <%= @game.current_turn.name %>'s turn 
+  <% end %>
 </h2>
+
 <form action="/attack" method="post">
   <input type="submit" value="ATTACK" >
 </form>

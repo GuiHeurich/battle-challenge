@@ -108,3 +108,37 @@ feature 'Start to lose' do
     expect(page).to have_content 'Callum: 50HP'
   end
 end
+
+# As a Player,
+# So I can Lose a game of Battle,
+# I want to see a 'Lose' message if I reach 0HP first
+
+feature 'to lose' do
+  scenario 'player receives a message if HP is 0' do
+    sign_in_and_play
+    click_button 'ATTACK'
+    click_button 'OK'
+    click_button 'ATTACK'
+    click_button 'OK'
+    click_button 'ATTACK'
+    click_button 'OK'
+    click_button 'ATTACK'
+    click_button 'OK'
+    click_button 'ATTACK'
+    click_button 'OK'
+    click_button 'ATTACK'
+    click_button 'OK'
+    click_button 'ATTACK'
+    click_button 'OK'
+    click_button 'ATTACK'
+    click_button 'OK'
+    click_button 'ATTACK'
+    click_button 'OK'
+    click_button 'ATTACK'
+    click_button 'OK'
+    click_button 'ATTACK'
+    click_button 'OK'
+    expect(page).not_to have_content 'Gui: -10HP'
+    expect(page).to have_content 'Gui LOST!'
+  end
+end

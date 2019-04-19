@@ -28,6 +28,14 @@ class Game
     players.select { |player| player != the_player }.first
   end
 
+  def finished?
+    @current_turn.died?
+  end
+
+  def final_message
+    "#{@current_turn.name} LOST!"
+  end
+
 private
 
   attr_reader :players
