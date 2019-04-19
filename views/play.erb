@@ -1,5 +1,5 @@
 <h1>
-  <%= @p1_name %>: <%= @p1_hp %>hp vs. <%= @p2_name %>: <%= @p2_hp %>hp
+  <%= @game.player_1.name %>: <%= @game.player_1.hit_points %>HP vs. <%= @game.player_2.name %>: <%= @game.player_2.hit_points %>HP
 </h1>
 
 <form action="/attack" method="post">

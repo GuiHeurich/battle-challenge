@@ -16,7 +16,7 @@ end
 feature 'Hit Points' do
   scenario 'displaying hit points' do
     sign_in_and_play
-    expect(page).to have_content 'Callum: 100hp'
+    expect(page).to have_content 'Callum: 60HP'
   end
 end
 
@@ -35,3 +35,10 @@ end
 # As Player 1,
 # So I can start to lose a game of Battle,
 # I want Player 2's attack to reduce my HP by 10
+
+
+
+
+# As two Players,
+# So we can continue our game of Battle,
+# We want to switch turns
