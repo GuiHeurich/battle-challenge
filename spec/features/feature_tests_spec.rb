@@ -16,7 +16,7 @@ end
 feature 'Hit Points' do
   scenario 'displaying hit points' do
     sign_in_and_play
-    expect(page).to have_content 'Callum: 60HP'
+    expect(page).to have_content 'Gui: 60HP'
   end
 end
 
@@ -40,7 +40,8 @@ feature 'Start to lose' do
   scenario 'reduces player HP' do
     sign_in_and_play
     click_button 'ATTACK'
-    expect(page).to have_content '50 HP'
+    click_button 'OK'
+    expect(page).to have_content 'Gui: 50HP'
   end
 end
 
@@ -59,7 +60,7 @@ feature 'Switch turns' do
     scenario 'after player 1 attacks' do
       sign_in_and_play
       click_button 'ATTACK'
-      click_link 'OK'
+      click_button 'OK'
       expect(page).not_to have_content "Callum's turn"
       expect(page).to have_content "Gui's turn"
     end
@@ -69,11 +70,41 @@ end
 # As Player 1,
 # So I can see how close I am to losing,
 # I want to see my own hit points
-#
+
+feature 'Hit Points' do
+  scenario 'displaying hit points' do
+    sign_in_and_play
+    expect(page).to have_content 'Callum: 60HP'
+  end
+end
+
 # As Player 1,
 # So I can lose a game of Battle,
 # I want Player 2 to attack me, and I want to get a confirmation
-#
+
+feature 'Attacking player' do
+  scenario 'player 2 hits player 1' do
+    sign_in_and_play
+    click_button 'ATTACK'
+    click_button 'OK'
+    click_button 'ATTACK'
+    expect(page).to have_content 'Gui attacked Callum'
+  end
+end
+
+
 # As Player 1,
 # So I can start to lose a game of Battle,
 # I want Player 2's attack to reduce my HP
+
+feature 'Start to lose' do
+  scenario 'reduces player HP' do
+    sign_in_and_play
+    click_button 'ATTACK'
+    click_button 'OK'
+    click_button 'ATTACK'
+    click_button 'OK'
+    expect(page).not_to have_content 'Callum: 60HP'
+    expect(page).to have_content 'Callum: 50HP'
+  end
+end
